@@ -57,6 +57,6 @@ $(function() {
     
     updateData();
 
-    window.setTimeout('updateData()', secondsToRefresh * 1000);
+    setInterval(updateData, secondsToRefresh * 1000);
 
 });
