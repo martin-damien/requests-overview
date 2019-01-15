@@ -10,6 +10,8 @@ serve files throush HTTP) and configure the application by copying
 - `gitlabToken` : Your Gitlab token (available at *https://gitlab.instance/profile/personal_access_tokens*).
 - `secondsToRefresh` : The number of the seconds before refreshing the list.
 
+You will also have to run `npm install` at the root of the project.
+
 ## About
 
 This project aims to replace https://github.com/Hexanet/MergeRequestsCI
