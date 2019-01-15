@@ -1,5 +1,9 @@
 $(function() {
 
+    let favicon = new Favico({
+        animation : 'popFade'
+    });
+
     let requests = [];
 
     function updateData() {
@@ -17,6 +21,9 @@ $(function() {
             data.forEach(function (request) {
                 requests.push(request);
             });
+
+            console.log(requests.length);
+            favicon.badge(requests.length);
 
             updateTable();
 
