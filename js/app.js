@@ -22,7 +22,6 @@ $(function() {
                 requests.push(request);
             });
 
-            console.log(requests.length);
             favicon.badge(requests.length);
 
             updateTable();
@@ -39,6 +38,7 @@ $(function() {
 
             let updateDate = moment(request.updated_at);
 
+            $('#lineTemplate').attr('data-id', request.id);
             $('#lineTemplate td.lastUpdate').html(updateDate.fromNow());
             $('#lineTemplate a.title')
                 .attr('href', request.web_url)
@@ -57,6 +57,27 @@ $(function() {
             $newLine.removeClass('d-none');
 
             $newLine.appendTo($('tbody'));
+
+            uptadeProjectInformations(request.id, request.project_id);
+
+        });
+
+    }
+
+    function uptadeProjectInformations(id, project_id) {
+
+        $.ajax({
+            url: gitlabInstance + "/projects/" + project_id,
+            headers: {
+                'PRIVATE-TOKEN': gitlabToken
+            }
+        })
+        .done(function (project) {
+
+            let $project = $('tr[data-id="' + id + '"] .project');
+
+            $project.html(project.name);
+            $project.attr('href', project.web_url);
 
         });
 
