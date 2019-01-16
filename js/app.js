@@ -37,6 +37,7 @@ $(function() {
         requests.forEach(function (request) {
 
             let updateDate = moment(request.updated_at);
+            let votes = request.upvotes - request.downvotes;
 
             $('#lineTemplate').attr('data-id', request.id);
             $('#lineTemplate td.lastUpdate').html(updateDate.fromNow());
@@ -46,15 +47,19 @@ $(function() {
             $('#lineTemplate td.avatar img')
                 .attr('src', request.author.avatar_url)
                 .attr('alt', request.author.name);
-            $('#lineTemplate span.sourceBranch').html(request.source_branch);
-            $('#lineTemplate span.targetBranch').html(request.target_branch);
-            $('#lineTemplate span.upvotes').html(request.upvotes);
-            $('#lineTemplate span.downvotes').html(request.downvotes);
 
             let $newLine = $('#lineTemplate').clone();
 
             $newLine.removeAttr('id');
             $newLine.removeClass('d-none');
+
+            if (votes < 0) {
+                $newLine.addClass('bg-danger');
+            }
+
+            if (votes > 0) {
+                $newLine.addClass('bg-success');
+            }
 
             $newLine.appendTo($('tbody'));
 

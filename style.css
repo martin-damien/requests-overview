@@ -1,0 +1,13 @@
+body {
+    background: #222 url("img/footer_lodyas.png");
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}

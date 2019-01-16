@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
 
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/popper.js/dist/popper.min.js"></script>
@@ -40,16 +41,13 @@
     </head>
     <body>
 
-        <table class="table">
+        <table class="table table-dark">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Last update</th>
                 <th scope="col">Project</th>
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
-                <th scope="col">Branch</th>
-                <th scope="col">👍🏻</th>
-                <th scope="col">👎🏻</th>
             </tr>
             </thead>
             <tbody>
@@ -64,11 +62,6 @@
                     <td class="avatar">
                         <img src="" alt="" width="30px">
                     </td>
-                    <td>
-                        <span class="sourceBranch"></span> → <span class="targetBranch"></span>
-                    </td>
-                    <td><span class="badge badge-success upvotes"></span></td>
-                    <td><span class="badge badge-danger downvotes"></span></td>
                 </tr>
             </tbody>
         </table>
