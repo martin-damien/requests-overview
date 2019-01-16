@@ -18,6 +18,10 @@ This project aims to replace https://github.com/Hexanet/MergeRequestsCI
 by keeping the [KISS](https://en.wikipedia.org/wiki/KISS_principle)
 principles.
 
+## Credits
+
+Background image: https://www.toptal.com/designers/subtlepatterns/dark-sharp-edges/
+
 ## License
 
 This software is under the GPL v3 license.
