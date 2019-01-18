@@ -1,5 +1,14 @@
 # Requests Overview
 
+![](https://raw.githubusercontent.com/martin-damien/requests-overview/master/img/screenshot.png)
+
+## What is it for?
+
+Requests Overview is a single page application with low dependencies and complexity to have
+an overview of the Merge Request of a Gitlab instance.
+
+It is designede to be displayed on a distant screen with no interaction.
+
 ## Installation
 
 Simply clone project on a webserver (Apache, Nginx or everything able to 
