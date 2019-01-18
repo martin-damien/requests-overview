@@ -40,11 +40,11 @@ $(function() {
             let votes = request.upvotes - request.downvotes;
 
             $('#lineTemplate').attr('data-id', request.id);
-            $('#lineTemplate td.lastUpdate').html(updateDate.fromNow());
+            $('#lineTemplate .lastUpdate').html(updateDate.fromNow());
             $('#lineTemplate a.title')
                 .attr('href', request.web_url)
                 .html(request.title);
-            $('#lineTemplate td.avatar img')
+            $('#lineTemplate .avatar img')
                 .attr('src', request.author.avatar_url)
                 .attr('alt', request.author.name);
 
