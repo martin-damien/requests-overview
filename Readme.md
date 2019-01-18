@@ -21,12 +21,6 @@ serve files throush HTTP) and configure the application by copying
 
 You will also have to run `npm install` at the root of the project.
 
-## About
-
-This project aims to replace https://github.com/Hexanet/MergeRequestsCI
-by keeping the [KISS](https://en.wikipedia.org/wiki/KISS_principle)
-principles.
-
 ## Credits
 
 Background image: https://www.toptal.com/designers/subtlepatterns/dark-sharp-edges/
