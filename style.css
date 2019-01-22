@@ -11,3 +11,24 @@ a:hover {
     color: #fff;
     text-decoration: none;
 }
+
+#requests div {
+    position: relative;
+    margin: 0;
+    padding: 20px;
+    display: block;
+    background-color: #222222;
+    color: #fff;
+    border: 0 #444 solid;
+    border-top-width: 2px;
+    box-shadow: #222222 0 0 10px;
+    border-right-width: 15px;
+}
+
+#requests div p {
+    color: #aaa;
+}
+
+.author, .project, .lastUpdate {
+    color: #fff;
+}
