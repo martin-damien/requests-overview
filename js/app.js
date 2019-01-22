@@ -41,7 +41,7 @@ $(function() {
             let $newLine = $('#lineTemplate').clone();
 
             $newLine.removeAttr('id');
-            $newLine.removeClass('d-none');
+            $newLine.css('display', 'block');
 
             $newLine.css('borderRightColor', '#222');
 
@@ -78,7 +78,7 @@ $(function() {
         });
 
     }
-    
+
     updateData();
 
     setInterval(updateData, secondsToRefresh * 1000);
