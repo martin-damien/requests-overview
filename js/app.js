@@ -10,17 +10,17 @@ $(function() {
                 'PRIVATE-TOKEN': gitlabToken
             }
         })
-            .done(function (data) {
+        .done(function (data) {
 
-                requests = [];
+            requests = [];
 
-                data.forEach(function (request) {
-                    requests.push(request);
-                });
-
-                updateTable();
-
+            data.forEach(function (request) {
+                requests.push(request);
             });
+
+            updateTable();
+
+        });
 
     }
 
@@ -69,13 +69,13 @@ $(function() {
                 'PRIVATE-TOKEN': gitlabToken
             }
         })
-            .done(function (project) {
+        .done(function (project) {
 
-                let $project = $('div[data-id="' + id + '"] .project');
+            let $project = $('div[data-id="' + id + '"] .project');
 
-                $project.html(project.name);
+            $project.html(project.name);
 
-            });
+        });
 
     }
 
