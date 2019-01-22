@@ -1,9 +1,5 @@
 $(function() {
 
-    let favicon = new Favico({
-        animation : 'popFade'
-    });
-
     let requests = [];
 
     function updateData() {
@@ -22,8 +18,6 @@ $(function() {
                 requests.push(request);
             });
 
-            favicon.badge(requests.length);
-
             updateTable();
 
         });
@@ -32,7 +26,7 @@ $(function() {
 
     function updateTable() {
 
-        $('tbody tr:not(#lineTemplate)').remove();
+        $('#requests div:not(#lineTemplate)').remove();
 
         requests.forEach(function (request) {
 
@@ -41,27 +35,25 @@ $(function() {
 
             $('#lineTemplate').attr('data-id', request.id);
             $('#lineTemplate .lastUpdate').html(updateDate.fromNow());
-            $('#lineTemplate a.title')
-                .attr('href', request.web_url)
-                .html(request.title);
-            $('#lineTemplate .avatar img')
-                .attr('src', request.author.avatar_url)
-                .attr('alt', request.author.name);
+            $('#lineTemplate h2').html(request.title);
+            $('#lineTemplate .author').html(request.author.name);
 
             let $newLine = $('#lineTemplate').clone();
 
             $newLine.removeAttr('id');
             $newLine.removeClass('d-none');
 
+            $newLine.css('borderRightColor', '#222');
+
             if (votes < 0) {
-                $newLine.addClass('bg-danger');
+                $newLine.css('borderRightColor', '#dc3545');
             }
 
             if (votes > 0) {
-                $newLine.addClass('bg-success');
+                $newLine.css('borderRightColor', '#28a745');
             }
 
-            $newLine.appendTo($('tbody'));
+            $newLine.appendTo($('#requests'));
 
             uptadeProjectInformations(request.id, request.project_id);
 
@@ -79,10 +71,9 @@ $(function() {
         })
         .done(function (project) {
 
-            let $project = $('tr[data-id="' + id + '"] .project');
+            let $project = $('div[data-id="' + id + '"] .project');
 
             $project.html(project.name);
-            $project.attr('href', project.web_url);
 
         });
 
