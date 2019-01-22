@@ -26,7 +26,7 @@ $(function() {
 
     function updateTable() {
 
-        $('tbody tr:not(#lineTemplate)').remove();
+        $('#requests div:not(#lineTemplate)').remove();
 
         requests.forEach(function (request) {
 
