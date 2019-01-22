@@ -10,17 +10,17 @@ $(function() {
                 'PRIVATE-TOKEN': gitlabToken
             }
         })
-        .done(function (data) {
+            .done(function (data) {
 
-            requests = [];
+                requests = [];
 
-            data.forEach(function (request) {
-                requests.push(request);
+                data.forEach(function (request) {
+                    requests.push(request);
+                });
+
+                updateTable();
+
             });
-
-            updateTable();
-
-        });
 
     }
 
@@ -41,7 +41,7 @@ $(function() {
             let $newLine = $('#lineTemplate').clone();
 
             $newLine.removeAttr('id');
-            $newLine.removeClass('d-none');
+            $newLine.css('display', 'block');
 
             $newLine.css('borderRightColor', '#222');
 
@@ -69,16 +69,16 @@ $(function() {
                 'PRIVATE-TOKEN': gitlabToken
             }
         })
-        .done(function (project) {
+            .done(function (project) {
 
-            let $project = $('div[data-id="' + id + '"] .project');
+                let $project = $('div[data-id="' + id + '"] .project');
 
-            $project.html(project.name);
+                $project.html(project.name);
 
-        });
+            });
 
     }
-    
+
     updateData();
 
     setInterval(updateData, secondsToRefresh * 1000);
