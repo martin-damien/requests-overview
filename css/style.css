@@ -21,7 +21,7 @@ a:hover {
 #requests div {
     position: relative;
     margin: 0;
-    padding: 20px;
+    padding: 10px 5px;
     display: block;
     background-color: #222222;
     color: #fff;
