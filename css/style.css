@@ -21,13 +21,11 @@ a:hover {
 #requests div {
     position: relative;
     margin: 0;
-    padding: 20px;
+    padding: 5px 10px;
     display: block;
     background-color: #222222;
     color: #fff;
     border: 0 #444 solid;
-    border-top-width: 2px;
-    box-shadow: #222222 0 0 10px;
     border-right-width: 15px;
 }
 
@@ -41,4 +39,8 @@ a:hover {
 
 #lineTemplate {
     display: none !important;
+}
+
+h2, p {
+    margin: 5px 0;
 }
