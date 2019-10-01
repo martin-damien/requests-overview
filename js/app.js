@@ -35,7 +35,7 @@ $(function() {
 
             $('#lineTemplate').attr('data-id', request.id);
             $('#lineTemplate .lastUpdate').html(updateDate.fromNow());
-            $('#lineTemplate h2').html(request.title);
+            $('#lineTemplate h2').html(joypixels.shortnameToImage(request.title));
             $('#lineTemplate .author').html(request.author.name);
 
             let $newLine = $('#lineTemplate').clone();
