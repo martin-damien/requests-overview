@@ -59,7 +59,7 @@ $(function() {
 
             $('#lineTemplate').attr('data-id', request.request.id);
             $('#lineTemplate .lastUpdate').html(updateDate.fromNow());
-            $('#lineTemplate h2').html(joypixels.shortnameToImage(request.request.title));
+            $('#lineTemplate h2').html(joypixels.shortnameToImage(request.request.title.replace(new RegExp('WIP\ ?:'), '')));
             $('#lineTemplate .author').html(request.request.author.name);
 
             let $newLine = $('#lineTemplate').clone();
@@ -70,11 +70,15 @@ $(function() {
             $newLine.css('borderRightColor', '#222');
 
             if (votes < 0) {
-                $newLine.css('borderRightColor', '#dc3545');
+                $newLine.addClass('downvoted');
             }
 
             if (votes > 0) {
-                $newLine.css('borderRightColor', '#28a745');
+                $newLine.addClass('upvoted');
+            }
+
+            if (request.request.title.toLowerCase().includes('wip')) {
+                $newLine.addClass('wip');
             }
 
             $newLine.appendTo($('#requests'));
