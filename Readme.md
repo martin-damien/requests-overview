@@ -26,7 +26,6 @@ const instances = [
 ```
 - `itemsByPage` : The number of requests you want to display at once.
 - `secondsToChangePage` : The number of the seconds before changing the page result.
-- `secondsToRefresh` : The number of the seconds before refreshing the list.
 
 **NB:** Your Gitlab token is available at *https://gitlab.instance/profile/personal_access_tokens*.
 
