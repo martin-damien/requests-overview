@@ -67,3 +67,13 @@ h2, p {
     );
     border-right-color: #e0dd18 !important;
 }
+
+#pages {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 0;
+    color: #ffffff;
+    padding: 10px;
+    background: #333;
+}

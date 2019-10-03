@@ -35,9 +35,12 @@ $(function() {
 
         currentPage++;
 
-        if (currentPage * itemsByPage > requests.length) {
+        if (currentPage * itemsByPage >= requests.length) {
             currentPage = 0;
         }
+
+        $('#pages .current').html(currentPage + 1);
+        $('#pages .total').html(Math.ceil(requests.length / itemsByPage));
 
         updateTable(getRequestsPage());
     }
