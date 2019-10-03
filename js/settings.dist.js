@@ -1,3 +1,9 @@
-const gitlabInstance = 'https://gitlab.instance/api/v4';
-const gitlabToken = '';
+const instances = [
+    {
+        server: 'https://gitlab.instance/api/v4',
+        token: ''
+    }
+];
+const itemsByPage = 5;
+const secondsToChangePage = 10;
 const secondsToRefresh = 300;
