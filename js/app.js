@@ -1,42 +1,66 @@
 $(function() {
 
+    joypixels.emojiSize = 64;
+
     let requests = [];
+    let currentPage = 0;
 
     function updateData() {
 
-        $.ajax({
-            url: gitlabInstance + "/merge_requests?state=opened&scope=all&order_by=updated_at",
-            headers: {
-                'PRIVATE-TOKEN': gitlabToken
-            }
-        })
-        .done(function (data) {
+        requests = [];
 
-            requests = [];
+        instances.forEach(function (instance) {
+            $.ajax({
+                url: instance['server'] + "/merge_requests?state=opened&scope=all&order_by=updated_at",
+                headers: {
+                    'PRIVATE-TOKEN': instance['token']
+                },
+                async: false
+            })
+            .done(function (data) {
 
-            data.forEach(function (request) {
-                requests.push(request);
+                data.forEach(function (request) {
+                    requests.push({request: request, server: instance['server'], token: instance['token']});
+                });
+
             });
-
-            updateTable();
-
         });
+
+        sortRequests();
+
+        updateTable(getRequestsPage());
 
     }
 
-    function updateTable() {
+    function changePage() {
+        currentPage++;
+
+        if (currentPage * itemsByPage > requests.length) {
+            currentPage = 0;
+        }
+
+        updateTable(getRequestsPage());
+    }
+
+    function sortRequests() {
+        requests = requests.sort(function (a, b) {
+            return a.request.updated_at < b.request.updated_at;
+        });
+    }
+
+    function updateTable(requestsPage) {
 
         $('#requests div:not(#lineTemplate)').remove();
 
-        requests.forEach(function (request) {
+        requestsPage.forEach(function (request) {
 
-            let updateDate = moment(request.updated_at);
-            let votes = request.upvotes - request.downvotes;
+            let updateDate = moment(request.request.updated_at);
+            let votes = request.request.upvotes - request.request.downvotes;
 
-            $('#lineTemplate').attr('data-id', request.id);
+            $('#lineTemplate').attr('data-id', request.request.id);
             $('#lineTemplate .lastUpdate').html(updateDate.fromNow());
-            $('#lineTemplate h2').html(joypixels.shortnameToImage(request.title));
-            $('#lineTemplate .author').html(request.author.name);
+            $('#lineTemplate h2').html(joypixels.shortnameToImage(request.request.title));
+            $('#lineTemplate .author').html(request.request.author.name);
 
             let $newLine = $('#lineTemplate').clone();
 
@@ -55,23 +79,23 @@ $(function() {
 
             $newLine.appendTo($('#requests'));
 
-            uptadeProjectInformations(request.id, request.project_id);
+            uptadeProjectInformations(request);
 
         });
 
     }
 
-    function uptadeProjectInformations(id, project_id) {
+    function uptadeProjectInformations(request) {
 
         $.ajax({
-            url: gitlabInstance + "/projects/" + project_id,
+            url: request.server + "/projects/" + request.request.project_id,
             headers: {
-                'PRIVATE-TOKEN': gitlabToken
+                'PRIVATE-TOKEN': request.token
             }
         })
         .done(function (project) {
 
-            let $project = $('div[data-id="' + id + '"] .project');
+            let $project = $('div[data-id="' + request.request.id + '"] .project');
 
             $project.html(project.name);
 
@@ -79,8 +103,13 @@ $(function() {
 
     }
 
+    function getRequestsPage() {
+        return requests.slice(currentPage * itemsByPage, currentPage * itemsByPage + itemsByPage);
+    }
+
     updateData();
 
     setInterval(updateData, secondsToRefresh * 1000);
+    setInterval(changePage, secondsToChangePage * 1000);
 
 });
