@@ -27,12 +27,12 @@ $(function() {
         });
 
         sortRequests();
-
-        updateTable(getRequestsPage());
-
     }
 
     function changePage() {
+
+        updateData();
+
         currentPage++;
 
         if (currentPage * itemsByPage > requests.length) {
@@ -111,9 +111,7 @@ $(function() {
         return requests.slice(currentPage * itemsByPage, currentPage * itemsByPage + itemsByPage);
     }
 
-    updateData();
+    changePage();
 
-    setInterval(updateData, secondsToRefresh * 1000);
     setInterval(changePage, secondsToChangePage * 1000);
-
 });

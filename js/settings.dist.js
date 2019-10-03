@@ -6,4 +6,3 @@ const instances = [
 ];
 const itemsByPage = 5;
 const secondsToChangePage = 10;
-const secondsToRefresh = 300;
