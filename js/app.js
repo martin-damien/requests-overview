@@ -62,7 +62,7 @@ $(function() {
 
             $('#lineTemplate').attr('data-id', request.request.id);
             $('#lineTemplate .lastUpdate').html(updateDate.fromNow());
-            $('#lineTemplate h2').html(joypixels.shortnameToImage(request.request.title.replace(new RegExp('WIP\ ?:'), '')));
+            $('#lineTemplate h2').html(joypixels.shortnameToImage(request.request.title.replace(new RegExp('(WIP|Wip|wip|DRAFT|Draft|draft)\ ?:'), '')));
             $('#lineTemplate .author').html(request.request.author.name);
 
             let $newLine = $('#lineTemplate').clone();
@@ -80,7 +80,10 @@ $(function() {
                 $newLine.addClass('upvoted');
             }
 
-            if (request.request.title.toLowerCase().includes('wip')) {
+            if (
+                request.request.title.toLowerCase().includes('wip')
+                || request.request.title.toLowerCase().includes('draft')
+            ) {
                 $newLine.addClass('wip');
             }
 
